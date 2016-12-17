@@ -1,7 +1,7 @@
 # DnD-5E-text-based-game
 
 
-A text based DnD game made in C
+A text based DnD game made in RUBY
 
 This project will be in work for a VERY long time. It will mainly start out as vanilla DnD and may move into home brew
 
