@@ -1,17 +1,18 @@
 #this program will be a quest in itself!
+Character = Struct.new(:name,:race,:alignment,:str,:dex,:int,:const,:char,:wis)
 def makeChar()
-	Struct.new("Charcter", :name,:race,:alignment,:str,:dex,:int,:const,:char,:wis)
-	print("Enter your Charcter name: ")
+	newChar = Character.new()
+	print("Enter your Character name: ")
 	name = gets.chomp
-	print("Enter your Charcter race: ")
+	print("Enter your Character race: ")
 	race = gets.chomp
-	print("Enter your Charcter alignment: ")
+	print("Enter your Character alignment: ")
 	align = gets.chomp
-	skillArray = Array.new(7)
+	skillArray = Array.new(6)
 	i = 0
 	until i == 6 do
 		if i == 0
-			puts("Enter the skills in order of highest priority to lowest (ex: str, int, const, dex,...")
+			puts("Enter the skills in order of highest priority to lowest (ex: str, int, const, dex, wis, char)")
 			print("Enter your first skill: ")
 			skillArray[i] = gets.chomp
 			i+=1
@@ -20,7 +21,40 @@ def makeChar()
 		skillArray[i]= gets.chomp
 		i+=1
 	end
-	print(skillArray)
+	rolledStats = Array.new(6,0)
+	i = 0
+	until i == 6 do
+		rolledStats[i] = rollStat()
+		i += 1
+	end
+	rolledStats = rolledStats.sort
+	rolledStats = rolledStats.reverse
+	i = 0
+	until i == 6 do
+		case skillArray[i]
+		when "str"
+			newChar.str = rolledStats[i]
+		when "int"
+			newChar.int = rolledStats[i]
+		when "dex"
+			newChar.dex = rolledStats[i]
+		when "wis"
+			newChar.wis = rolledStats[i]
+		when "const"
+			newChar.const = rolledStats[i]
+		when "char"
+			newChar.char = rolledStats[i]
+		else
+			puts("It appears you have entered an invalid value for a skill")
+			print("Please try again but enter only the following: str, dex, int, char, wis, const")
+			makeChar()
+		end
+		i += 1
+	end
+	newChar.name = name
+	newChar.alignment = align
+	newChar.race = race
+	print(newChar)
 end
 
 #roll a stat
@@ -38,13 +72,12 @@ def rollStat()
 		final += stat[j]
 		j+=1
 	end
-	print stat
-	print final
+	return final
 end 
 
 
 def main()
-	rollStat()
+	makeChar()
 
 
 end
