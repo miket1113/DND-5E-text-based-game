@@ -10,7 +10,7 @@ The todo list of stuff!
 
 - [ ] Items Class
 
-- [ ] Terrain Class
 - [ ] Create Map File
+- [ ] Terrain Class
 - [ ] Create the some randomization of terrain
 
