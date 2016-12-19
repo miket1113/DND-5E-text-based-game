@@ -46,7 +46,7 @@ def makeChar()
 			newChar.char = rolledStats[i]
 		else
 			puts("It appears you have entered an invalid value for a skill")
-			print("Please try again but enter only the following: str, dex, int, char, wis, const")
+			puts("Please try again but enter only the following: str, dex, int, char, wis, const")
 			makeChar()
 		end
 		i += 1
@@ -54,7 +54,10 @@ def makeChar()
 	newChar.name = name
 	newChar.alignment = align
 	newChar.race = race
-	print(newChar)
+	puts("Our brave adventurer's name is #{name} the #{race}")
+	puts("#{name}'s stats are as follows:\n Str: #{newChar.str} \n Dex: #{newChar.dex}
+		 Const: #{newChar.const} \n Int: #{newChar.int} \n Wis: #{newChar.wis} \n Char: #{newChar.char}")
+	print("#{name} prepare for your quest!")
 end
 
 #roll a stat
