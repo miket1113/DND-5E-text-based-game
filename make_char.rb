@@ -10,9 +10,6 @@ def makeChar()
 	align = gets.chomp
 	skillArray = Array.new(6)
 
-
-	# => started fucking around
-
 	rolledStats = Array.new(6,0)
 	i = 0
 	until i == 6 do
@@ -61,9 +58,7 @@ def makeChar()
 		end
 		i += 1
 	end
-
-	# => stopped fucking around
-
+	
 	newChar.name = name
 	newChar.alignment = align
 	newChar.race = race
