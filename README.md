@@ -13,3 +13,6 @@ Libraries in use:
 
     https://github.com/fazibear/colorize
     gem install colorize
+
+    https://github.com/junegunn/perlin_noise
+    gem install perlin_noise
