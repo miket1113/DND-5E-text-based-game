@@ -8,19 +8,8 @@ def makeChar()
 	race = gets.chomp
 	print("Enter your Character alignment: ")
 	align = gets.chomp
+	
 	skillArray = Array.new(6)
-	i = 0
-	until i == 6 do
-		if i == 0
-			puts("Enter the skills in order of highest priority to lowest (ex: str, int, const, dex, wis, char)")
-			print("Enter your first skill: ")
-			skillArray[i] = gets.chomp
-			i+=1
-		end
-		print("Enter your next skill:")
-		skillArray[i]= gets.chomp
-		i+=1
-	end
 	rolledStats = Array.new(6,0)
 	i = 0
 	until i == 6 do
@@ -29,8 +18,22 @@ def makeChar()
 	end
 	rolledStats = rolledStats.sort
 	rolledStats = rolledStats.reverse
+	
 	i = 0
+	i2 = 0
 	until i == 6 do
+		until i2 == 6 do
+			if i2 == 0
+				puts("Enter the skills in order of highest priority to lowest (ex: str, int, const, dex, wis, char)")
+				print("Enter your first skill :")
+				skillArray[i2] = gets.chomp
+				i2+=1
+			end
+			print("Enter your next skill  :")
+			skillArray[i2]= gets.chomp
+			i2+=1
+		end
+
 		case skillArray[i]
 		when "str"
 			newChar.str = rolledStats[i]
@@ -47,10 +50,12 @@ def makeChar()
 		else
 			puts("It appears you have entered an invalid value for a skill")
 			puts("Please try again but enter only the following: str, dex, int, char, wis, const")
-			makeChar()
+			i = -1
+			i2 = 0
 		end
 		i += 1
 	end
+	
 	newChar.name = name
 	newChar.alignment = align
 	newChar.race = race
@@ -66,14 +71,14 @@ def rollStat()
 	i = 0
 	until i == 4 do 
 		stat[i] = rand(1..6)
-		i+=1
+		i += 1
 	end
 	stat = stat.sort
 	j = 1
 	final = 0
 	until j == 4 do 
 		final += stat[j]
-		j+=1
+		j += 1
 	end
 	return final
 end 
